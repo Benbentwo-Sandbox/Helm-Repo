@@ -13,8 +13,6 @@ jobs:
       - name: yq - portable yaml processor
         uses: mikefarah/yq@3.3.0
       - run: |
-          echo ${{ toJson(github.event.client_payload) }}
-          echo
           url=${{ toJson(github.event.client_payload.chart_url) }}
           version=${{ toJson(github.event.client_payload.version) }}
           helm_chart=${{ toJson(github.event.client_payload.helm_chart) }}
