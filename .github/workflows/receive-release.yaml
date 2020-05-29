@@ -15,18 +15,11 @@ jobs:
       - run: |
           echo ${{ toJson(github.event.client_payload) }}
           echo
-          test=${{toJson(github.event.client_payload.chart_url)}}
-          echo $test
-          url=$(echo '${{ toJson(github.event.client_payload) }}' | jq -r '.chart_url')
-          echo $url
-          version=$(echo '${{ toJson(github.event.client_payload) }}' | jq -r '.version')
-          echo $version
-          helm_chart=$(echo '${{ toJson(github.event.client_payload) }}' | jq -r '.helm_chart')
-          echo $helm_chart
-          repository=$(echo '${{ toJson(github.event.client_payload) }}' | jq -r '.repository')
-          echo $repository
-          wget $url
-          
+          url=${{ toJson(github.event.client_payload.chart_url) }}
+          version=${{ toJson(github.event.client_payload.version) }}
+          helm_chart=${{ toJson(github.event.client_payload.helm_chart) }}
+          repository=${{ toJson(github.event.client_payload.repository) }}
+
           wget $url
           mv $helm_chart charts/$helm_chart
           helm repo index charts --url https://benbentwo.github.io/Helm-Repo/charts --merge index.yaml
