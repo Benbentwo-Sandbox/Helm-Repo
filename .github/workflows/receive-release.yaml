@@ -49,7 +49,7 @@ jobs:
 
           [Download Link](${{steps.index-generation.outputs.url}})
 
-          [Repository](https://${{steps.index-generation.outputs.repository}})
+          [Repository](${{steps.index-generation.outputs.repository}})
           "
           assignees: 'Benbentwo'
           labels: 'Release Patch'
